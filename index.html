@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+
+
+    function getComputerChoice () {
+
+        let a = Math.ceil((Math.random()*3));
+        let b;
+
+        if(a === 1) {
+            b = "rock";
+        } else if (a === 2){
+            b = "paper";
+        } else {
+            b = "scissors";
+        }
+
+        return b;
+
+    }
+
+
+    function getHumanChoice() {
+        let choice = prompt("Rock, paper or scissors?");
+
+        return choice;
+    }
+
+
+    let humScore = 0;
+    let compScore = 0;
+
+
+    function playRound1 (cc, hc) {
+
+        let human = hc.toLowerCase();
+        let comp = cc.toLowerCase();
+
+        if(comp === "rock" && human === "scissors" || comp === "scissors" && human === "paper" || comp === "paper" && human === "rock") {
+
+            compScore++;
+            console.log(`Computer wins! ${comp} beats ${human}`);
+
+        } else if (comp === human) {
+            console.log(`It's a tie!`);
+        } else {
+            
+            humScore++;
+            console.log(`You win! ${human} beats ${comp}`);
+
+        }
+
+        console.log(`Computer chose: ${comp}`);
+        console.log(`Score is: computer - ${compScore}, human - ${humScore}`);
+
+}
+
+
+    function playGame () {
+
+    
+
+        for(let i = 1; i < 6; i++) {
+
+            let a = getComputerChoice();
+            let b = getHumanChoice();
+
+            console.log(`Round number: ${i}`);
+
+
+            playRound1(a, b);
+
+        }
+
+    }
+
+    playGame();
+
+
+
+    //playRound1(getHumanChoice(), getComputerChoice());
+</script>
